@@ -1,1 +1,35 @@
-<p>lista-destinos works!</p>
+<div class="mt-5 container	content">
+  <div class="row">
+    <div class="col-md-6	offset-md-3">
+      <span class="anchor" id="formLogin"></span>
+      <div class="card	card-outline-secondary">
+        <div class="card-header">
+          <h3 class="mb-0 text-center text-dark" style="font-weight: 400">Whishlist</h3>
+        </div>
+        <div class="card-body">
+          <form>
+            <div class="form-group">
+              <label for="nombre">Destino</label>
+              <input type="text" class="form-control" id="nombre" placeholder="Ingresa el destino" #nombre>
+            </div>
+
+            <div class="form-group">
+              <label for="txaDescripcion">Descripción</label>
+              <textarea class="form-control" placeholder="Ingresa la descripción" id="descripcion" rows="3" #descripcion></textarea>
+            </div> 
+
+            <div class="form-group">
+              <label for="imagen">Imagen</label>
+              <input type="text" class="form-control" id="imagen" placeholder="Ingresa la url" #imagen>
+            </div>
+            <button type="submit" class="btn btn-sm btn-block btn-info rounded-pill shadow-sm"(click)="guardarDatos(nombre.value, imagen.value, descripcion.value)">Guardar</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <hr class="mb-4 mt-4" *ngIf="destinos.length > 0">
+  <div class="row">
+    <app-destino-viaje *ngFor="let destino of destinos; let indice = index" [destino] = "destino" [indice] = "indice"></app-destino-viaje>
+  </div>
+</div>
