@@ -1,0 +1,26 @@
+.msg {
+  background: transparent;
+  color: #666666;
+  font-weight: bold;
+  font-size: small;
+  padding: 7px 12px 7px 16px;
+  border-top: solid 3px #CCCCCC;
+  border-bottom: 0;
+  border-left: 0;
+  border-right: 0;
+  border-radius: 12px;
+  margin-bottom: 10px;
+  -webkit-box-shadow: 0 10px 10px -5px rgba(0,0,0,.08);
+  -moz-box-shadow: 0 10px 10px -5px rgba(0,0,0,.08);
+  box-shadow: 0 5px 10px 3px rgba(0,0,0,.08);
+}
+
+.msg-info {
+  border-color: #f82429;
+  border-color: rgba(248, 36, 41, 0.6);
+}
+
+.close{
+  text-shadow: none;
+  opacity: 0.6;
+}

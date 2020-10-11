@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component} from '@angular/core';
 import { DestinoViaje } from '../models/DestinoViaje.model';
 
 @Component({
@@ -6,22 +6,40 @@ import { DestinoViaje } from '../models/DestinoViaje.model';
   templateUrl: './lista-destinos.component.html',
   styleUrls: ['./lista-destinos.component.css']
 })
-export class ListaDestinosComponent implements OnInit {
+export class ListaDestinosComponent {
   destinos: DestinoViaje[];
 
   constructor() {
     this.destinos = [];
   }
 
-  ngOnInit(): void {
-  }
 
-
-  guardarDatos(nombre:string, url:string, descripcion:string):boolean{
-    this.destinos.push(new DestinoViaje(nombre, url, descripcion));
+  guardarDatos(nombre, url, descripcion):boolean{
+    //if(nombre.value === "" || url.value === "" || descripcion.value === ""){
+    //}else{
+      this.destinos.push(new DestinoViaje(this.upperFirst(nombre.value), this.upperFirst(url.value), this.upperFirst(descripcion.value)));
+      this.limpiarFormulario(nombre, url, descripcion);
+   // }
 
     return false;
   }
 
+  elegido(destinoViaje: DestinoViaje){
+    this.destinos.forEach( (d) => {
+      d.setValue(false);
+    })
+    destinoViaje.setValue(true);
+  }
+
+  limpiarFormulario(campo1, campo2, campo3){
+    campo1.value = "";
+    campo2.value = "";
+    campo3.value = "";
+  }
+
+  upperFirst = (text) => {
+    if (typeof text !== 'string') return ''
+    return text.charAt(0).toUpperCase() + text.slice(1)
+  }
 
 }

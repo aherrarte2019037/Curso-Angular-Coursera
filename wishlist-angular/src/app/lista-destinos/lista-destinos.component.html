@@ -1,10 +1,10 @@
-<div class="mt-5 container	content">
+<div class="mt-4 container	content">
   <div class="row justify-content-center">
     <div class="col-md-8 col-lg-7 col-xl-6">
       <span class="anchor" id="formLogin"></span>
-      <div class="card	card-outline-secondary">
-        <div class="card-header">
-          <h3 class="mb-0 text-center" style="font-weight: 400; color: #363636">Whishlist</h3>
+      <div class="card card-outline-secondary pl-3 pr-3 pb-2" style="border-radius: 15px; padding-top: 13px">
+        <div class="card-header border-0 bg-transparent pb-0">
+          <h3 class="mb-0 text-center" style="font-weight: 400; color: #363636; -webkit-text-stroke: 0.3px rgba(0, 0, 0, 0.7)"><i>Wishlist</i></h3>
         </div>
         <div class="card-body" style="color: #535353; font-weight: 500">
           <form>
@@ -22,14 +22,21 @@
               <label for="imagen">Imagen</label>
               <input required type="text" class="form-control" id="imagen" placeholder="Ingresa la url" #imagen>
             </div>
-            <button type="submit" class="btn btn-sm btn-block btn-info rounded-pill shadow-sm" (click)="guardarDatos(nombre.value, imagen.value, descripcion.value)">Guardar <i class="fas fa-check fa-sm"></i></button>
+            <button class="btn btn-sm btn-block btn-info rounded-pill shadow-sm" (click)="guardarDatos(nombre, imagen, descripcion)">Guardar
+              <svg width="1.35em" height="1.35em" viewBox="0 0.55 16 16" class="bi bi-check2-all" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M12.354 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
+                <path d="M6.25 8.043l-.896-.897a.5.5 0 1 0-.708.708l.897.896.707-.707zm1 2.414l.896.897a.5.5 0 0 0 .708 0l7-7a.5.5 0 0 0-.708-.708L8.5 10.293l-.543-.543-.707.707z"/>
+              </svg>
+            </button>
           </form>
         </div>
       </div>
     </div>
   </div>
-  <hr class="mb-4 mt-4" *ngIf="destinos.length > 0">
-  <div class="row">
-    <app-destino-viaje *ngFor="let destino of destinos; let indice = index" [destino] = "destino" [indice] = "indice"></app-destino-viaje>
+  <div class="row mt-5">
+    <app-destino-viaje
+      *ngFor="let destino of destinos; let indice = index" [destino] = "destino" [indice] = "indice"
+      (clicked)="elegido($event)">
+    </app-destino-viaje>
   </div>
 </div>

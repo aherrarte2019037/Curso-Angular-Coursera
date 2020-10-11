@@ -4,11 +4,19 @@
     <span><h4>{{ indice + 1 }}</h4></span>
   </div>
   <div class="card-desc">
-    <h3 style="color: #363636">{{ destino.nombre }}</h3>
-    <p>{{ destino.descripcion }}</p>
+    <h3 style="color: #363636;">{{ destino.nombre }}</h3>
+    <p class="mb-2">{{ destino.descripcion }}</p>
+    <p class="mb-0 text-dark">Servicios</p>
+    <ul>
+      <li class="mb-1 text-muted" *ngFor="let servicio of destino.servicios">
+        <span [ngSwitch]="servicio">
+          <i *ngSwitchCase="'Desayuno'" title="Gratis">{{ servicio }}* </i>
+          <i *ngSwitchDefault>{{ servicio }}</i>
+        </span>
+      </li>
+    </ul>
     <div class="d-flex justify-content-start">
-      <a class="btn-card">Me Gusta <i class="fas fa-heart fa-sm"></i></a>
+      <a class="btn-card" (click)="seleccionar()">Me Gusta <i *ngIf="destino.isSelected()" class="fas fa-heart fa-sm">{{ 5+5 }}</i></a>
     </div>
   </div>
 </div>
-
