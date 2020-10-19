@@ -1,5 +1,9 @@
-import { Component} from '@angular/core';
+import {Component, EventEmitter, Output} from '@angular/core';
 import { DestinoViaje } from '../models/DestinoViaje.model';
+import {DestinosApiClient } from '../models/DestinosApiClient.model';
+import {AppState} from "../app.module";
+import {Store} from "@ngrx/store";
+import {FavoritoDestinoAction, NuevoDestinoAction} from "../models/DestinoViajeState.model";
 
 @Component({
   selector: 'app-lista-destinos',
@@ -7,39 +11,31 @@ import { DestinoViaje } from '../models/DestinoViaje.model';
   styleUrls: ['./lista-destinos.component.css']
 })
 export class ListaDestinosComponent {
-  destinos: DestinoViaje[];
+  @Output() onItemAdded: EventEmitter<DestinoViaje>;
+  updates: string[];
+  contadorHistorial:number = 0;
+  willFavorite:boolean;
 
-  constructor() {
-    this.destinos = [];
+  constructor(public destinosApiClient:DestinosApiClient, private store: Store<AppState>) {
+    this.onItemAdded = new EventEmitter();
+    this.updates  = [];
+    this.store.select(state => state.destinos.favorito).subscribe( favorito => {
+        if(favorito !== null){
+          this.updates.push(favorito.nombre)
+        }
+    });
+
   }
 
-
-  guardarDatos(nombre, url, descripcion):boolean{
-    //if(nombre.value === "" || url.value === "" || descripcion.value === ""){
-    //}else{
-      this.destinos.push(new DestinoViaje(this.upperFirst(nombre.value), this.upperFirst(url.value), this.upperFirst(descripcion.value)));
-      this.limpiarFormulario(nombre, url, descripcion);
-   // }
-
-    return false;
+  agregado(destino: DestinoViaje){
+    this.destinosApiClient.add(destino);
+    this.onItemAdded.emit(destino);
+    this.store.dispatch(new NuevoDestinoAction(destino));
   }
 
-  elegido(destinoViaje: DestinoViaje){
-    this.destinos.forEach( (d) => {
-      d.setValue(false);
-    })
-    destinoViaje.setValue(true);
-  }
-
-  limpiarFormulario(campo1, campo2, campo3){
-    campo1.value = "";
-    campo2.value = "";
-    campo3.value = "";
-  }
-
-  upperFirst = (text) => {
-    if (typeof text !== 'string') return ''
-    return text.charAt(0).toUpperCase() + text.slice(1)
+  elegido(destino: DestinoViaje){
+    this.destinosApiClient.elegir(destino);
+    this.store.dispatch(new FavoritoDestinoAction(destino));
   }
 
 }

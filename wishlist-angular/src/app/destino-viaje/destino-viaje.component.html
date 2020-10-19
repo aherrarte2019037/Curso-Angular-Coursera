@@ -6,7 +6,8 @@
   <div class="card-desc">
     <h3 style="color: #363636;">{{ destino.nombre }}</h3>
     <p class="mb-2">{{ destino.descripcion }}</p>
-    <p class="mb-0 text-dark">Servicios</p>
+    <hr style="margin-top: 12px; margin-bottom: 12px">
+    <p style="font-weight: 500" class="mb-0 text-dark">Servicios</p>
     <ul>
       <li class="mb-1 text-muted" *ngFor="let servicio of destino.servicios">
         <span [ngSwitch]="servicio">
@@ -15,8 +16,10 @@
         </span>
       </li>
     </ul>
-    <div class="d-flex justify-content-start">
+    <div class="d-flex justify-content-center flex-wrap">
       <a class="btn-card" (click)="seleccionar()">Me Gusta <i *ngIf="destino.isSelected()" class="fas fa-heart fa-sm">{{ 5+5 }}</i></a>
+      <a class="btn-card btn-detalle mt-2" [routerLink]="['/destino']">Ver Detalles</a>
     </div>
   </div>
 </div>
+

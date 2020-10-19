@@ -1,0 +1,37 @@
+<form [formGroup]="formDj" (ngSubmit)="guardar(formDj ,formDj.controls['nombre'].value, formDj.controls['descripcion'].value, formDj.controls['url'].value)">
+
+  <div class="form-group">
+    <label for="nombre">Destino</label>
+    <input type="text" class="form-control {{ classInvalidNombre }}" id="nombre" formControlName="nombre" placeholder="Ingresa el destino">
+    <ul>
+      <li *ngFor="let result of results">{{ result }}</li>
+    </ul>
+    <div *ngIf="missingName" class="invalid-feedback d-block">Campo Requerido</div>
+    <div *ngIf="badName" class="invalid-feedback d-block">Mínimo {{ minLengthNombre }} letras</div>
+  </div>
+
+  <div class="form-group">
+    <label for="descripcion">Descripción</label>
+    <textarea style="resize: none" (paste)="quitMessageDesc()" (keypress)="quitMessageDesc()" class="form-control {{ classInvalidDesc }}" placeholder="Ingresa la descripción" id="descripcion" formControlName="descripcion" rows="3"></textarea>
+    <div *ngIf="missingDesc" class="invalid-feedback d-block">Campo Requerido</div>
+  </div>
+
+  <div class="form-group">
+    <label for="url">Imagen</label>
+    <input type="text" class="form-control" id="url" placeholder="Ingresa la url" formControlName="url">
+  </div>
+
+  <div class="custom-control custom-checkbox mb-3">
+    <input type="checkbox" class="custom-control-input" id="chbFavorito" formControlName="asFavorite">
+    <label class="custom-control-label font-weight-normal" for="chbFavorito">Elegir como favorito</label>
+  </div>
+
+  <button type="submit" class="btn btn-sm btn-block btn-info rounded-pill shadow-sm">Guardar
+    <svg width="1.35em" height="1.35em" viewBox="0 0.55 16 16" class="bi bi-check2-all" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+      <path fill-rule="evenodd" d="M12.354 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
+      <path d="M6.25 8.043l-.896-.897a.5.5 0 1 0-.708.708l.897.896.707-.707zm1 2.414l.896.897a.5.5 0 0 0 .708 0l7-7a.5.5 0 0 0-.708-.708L8.5 10.293l-.543-.543-.707.707z"/>
+    </svg>
+  </button>
+
+
+</form>

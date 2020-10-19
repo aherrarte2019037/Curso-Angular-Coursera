@@ -107,7 +107,7 @@ section {
 
 .btn-card {
   -webkit-text-stroke: 0.08px rgba(255, 255, 255, 0.5);
-  width: 144.06px;
+  width: 75%;
   background-color: #f44336;
   color: white!important;
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .16), 0 2px 10px 0 rgba(0, 0, 0, .12);
@@ -127,12 +127,99 @@ section {
   word-wrap: break-word;
 }
 
+.btn-detalle{
+  background-color: #363636;
+}
+
+.btn-detalle:hover{
+  background-color: #414141 !important;
+}
+
 .btn-card:hover {
-  background: #FF4D2D;
+  background: #f64e42;
 }
 
 a.btn-card {
   text-align: center;
   text-decoration: none;
   color: #fff;
+}
+
+.is-invalid{
+  background-origin: padding-box!important;
+  background-image: url("assets/images/icoCerrar.svg")!important;
+  background-size: 11px 11px !important;
+  background-position: right calc(.375em + .2975rem) center!important;
+}
+
+.invalid-feedback{
+  font-family: Alata;
+  font-size: 12px;
+  font-weight: normal;
+  margin-left: 2px;
+}
+
+.msg {
+  letter-spacing: 0.7px;
+  margin-left: 1.8%;
+  margin-right: 1.8%;
+  background: #fefefe;
+  color: #666666;
+  font-weight: 500;
+  font-size: small;
+  padding: 8px;
+  padding-left: 18px;
+  border-top: solid 3px #CCCCCC;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  -webkit-box-shadow: 0 10px 10px -5px rgba(0,0,0,.08);
+  -moz-box-shadow: 0 10px 10px -5px rgba(0,0,0,.08);
+  box-shadow: 0 10px 10px -5px rgba(0,0,0,.08);
+}
+.msg-clear {
+  border-color: #fefefe;
+  -webkit-box-shadow: 0 7px 10px -5px rgba(0,0,0,.15);
+  -moz-box-shadow: 0 7px 10px -5px rgba(0,0,0,.15);
+  box-shadow: 0 7px 10px -5px rgba(0,0,0,.15);
+}
+
+.msg-close{
+  padding: 3px 15px!important;
+}
+
+.msg-info {
+  border-color: #b8dbf2;
+}
+.msg-success {
+  border-color: #cef2b8;
+}
+.msg-warning {
+  border-color: rgba(255,165,0,.5);
+}
+.msg-danger {
+  border-color: #ec8282;
+}
+.msg-primary {
+  border-color: #9ca6f1;
+}
+.msg-magick {
+  border-color: #e0b8f2;
+}
+.msg-info-text {
+  color: #39b3d7;
+}
+.msg-success-text {
+  color: #80d651;
+}
+.msg-warning-text {
+  color: #db9e34;
+}
+.msg-danger-text {
+  color: #c9302c;
+}
+.msg-primary-text {
+  color: rgba(47,106,215,.9);
+}
+.msg-magick-text {
+  color: #bb39d7;
 }
