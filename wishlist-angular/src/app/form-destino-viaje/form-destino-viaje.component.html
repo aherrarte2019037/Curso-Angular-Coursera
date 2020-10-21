@@ -1,4 +1,4 @@
-<form [formGroup]="formDj" (ngSubmit)="guardar(formDj ,formDj.controls['nombre'].value, formDj.controls['descripcion'].value, formDj.controls['url'].value)">
+<form [formGroup]="formDj" (ngSubmit)="guardar(formDj.controls['nombre'].value, formDj.controls['descripcion'].value, formDj.controls['url'].value, formDj.controls['favorite'].value)">
 
   <div class="form-group">
     <label for="nombre">Destino</label>
@@ -22,7 +22,7 @@
   </div>
 
   <div class="custom-control custom-checkbox mb-3">
-    <input type="checkbox" class="custom-control-input" id="chbFavorito" formControlName="asFavorite">
+    <input type="checkbox" class="custom-control-input" id="chbFavorito" formControlName="favorite">
     <label class="custom-control-label font-weight-normal" for="chbFavorito">Elegir como favorito</label>
   </div>
 

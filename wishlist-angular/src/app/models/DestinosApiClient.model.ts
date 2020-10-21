@@ -13,6 +13,10 @@ export class DestinosApiClient {
     this.destinos.push(d);
   }
 
+  delete(indice:number){
+    this.destinos.splice(indice, 1)
+  }
+
   getAll(){
     return this.destinos;
   }

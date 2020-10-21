@@ -1,9 +1,10 @@
 <div style="border-radius: 0.5rem" class="card-content">
   <div class="card-img">
     <img style="border-radius: 0.5rem 0.5rem 0 0" src="https://placeimg.com/380/230/nature" alt="">
-    <span><h4>{{ indice + 1 }}</h4></span>
+    <span id="card-index"><h4>{{ indice + 1 }}</h4></span>
   </div>
-  <div class="card-desc">
+  <span (click)="setEliminarDestino(indice)" id="card-close" class="float-right" aria-hidden="true" title="Eliminar">&times;</span>
+  <div style="padding-top: 12px" class="card-desc">
     <h3 style="color: #363636;">{{ destino.nombre }}</h3>
     <p class="mb-2">{{ destino.descripcion }}</p>
     <hr style="margin-top: 12px; margin-bottom: 12px">
@@ -17,7 +18,7 @@
       </li>
     </ul>
     <div class="d-flex justify-content-center flex-wrap">
-      <a class="btn-card" (click)="seleccionar()">Me Gusta <i *ngIf="destino.isSelected()" class="fas fa-heart fa-sm">{{ 5+5 }}</i></a>
+      <a class="btn-card" (click)="seleccionar()">Me Gusta <i *ngIf="destino.isSelected()" class="fas fa-heart fa-sm"></i></a>
       <a class="btn-card btn-detalle mt-2" [routerLink]="['/destino']">Ver Detalles</a>
     </div>
   </div>

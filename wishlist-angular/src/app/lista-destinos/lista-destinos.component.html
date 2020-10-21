@@ -10,7 +10,7 @@
         </div>
         <div class="card-body" style="color: #535353; font-weight: 500">
 
-          <app-form-destino-viaje (onItemAdded)="agregado($event)"></app-form-destino-viaje>
+          <app-form-destino-viaje  (willFavorite)="setWillFavorite($event)" (onItemAdded)="agregado($event)"></app-form-destino-viaje>
 
         </div>
       </div>
@@ -19,7 +19,7 @@
   <div class="row mt-5 justify-content-center">
     <app-destino-viaje
       *ngFor="let destino of destinosApiClient.getAll(); let indice = index" [destino]="destino" [indice]="indice"
-      (clicked)="elegido($event)">
+      (clicked)="elegido($event)" (eliminarDestino)="willBeDelete($event)">
     </app-destino-viaje>
   </div>
 </div>

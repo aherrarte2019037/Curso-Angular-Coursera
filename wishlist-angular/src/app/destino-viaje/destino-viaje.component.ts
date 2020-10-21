@@ -11,10 +11,12 @@ export class DestinoViajeComponent implements OnInit{
   @Input() indice: number;
   @HostBinding('attr.class') cssClass = 'col-11 col-md-6 col-lg-4 mb-3';
   @Output() clicked: EventEmitter<DestinoViaje>;
+  @Output() eliminarDestino: EventEmitter<number>;
 
 
   constructor() {
     this.clicked = new EventEmitter();
+    this.eliminarDestino = new EventEmitter();
   }
 
   ngOnInit(): void {
@@ -25,4 +27,7 @@ export class DestinoViajeComponent implements OnInit{
     return false;
   }
 
+  setEliminarDestino(idEliminar:number) {
+    this.eliminarDestino.emit(idEliminar)
+  }
 }

@@ -24,7 +24,8 @@ export function intializeDestinoViajeState() {
 /* Acciones */
 export enum DestinoViajeActionType {
   NUEVO_DESTINO = '[Destino Viajes] Nuevo',
-  ELEGIDO_FAVORITO = '[Destino Viaje] Favorito'
+  ELEGIDO_FAVORITO = '[Destino Viaje] Favorito',
+  NO_ELEGIDO_FAVORITO = '[Destino Viaje] NoFavorito'
 }
 
 
@@ -39,8 +40,13 @@ export class FavoritoDestinoAction implements Action {
   constructor(public destino: DestinoViaje) {}
 }
 
+export class NoFavoritoDestinoAction implements Action{
+  type = DestinoViajeActionType.NO_ELEGIDO_FAVORITO;
+  constructor() {}
+}
 
-export type DestinoViajeActions = NuevoDestinoAction | FavoritoDestinoAction;
+
+export type DestinoViajeActions = NuevoDestinoAction | FavoritoDestinoAction | NoFavoritoDestinoAction;
 
 
 /* Reducers */
@@ -58,6 +64,9 @@ export function reducerDestinoViajes(state: DestinoViajeState, action: DestinoVi
       const fav: DestinoViaje = (action as FavoritoDestinoAction).destino;
       fav.setValue(true);
       return {...state, favorito: fav}
+    }
+
+    case DestinoViajeActionType.NO_ELEGIDO_FAVORITO: {
     }
   }
   return state;
