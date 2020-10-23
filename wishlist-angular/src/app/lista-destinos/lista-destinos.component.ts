@@ -3,7 +3,6 @@ import {DestinoViaje} from '../models/DestinoViaje.model';
 import {DestinosApiClient} from '../models/DestinosApiClient.model';
 import {AppState} from "../app.module";
 import {Store} from "@ngrx/store";
-import {FavoritoDestinoAction, NoFavoritoDestinoAction, NuevoDestinoAction} from "../models/DestinoViajeState.model";
 
 @Component({
   selector: 'app-lista-destinos',
@@ -15,43 +14,31 @@ export class ListaDestinosComponent {
   @Output() willFavorite: EventEmitter<boolean>;
   updates: string[];
   contadorHistorial: number = 0;
-  willBeFavorite: boolean;
+  willBeFavorite;
+  all;
 
   constructor(public destinosApiClient: DestinosApiClient, private store: Store<AppState>) {
     this.onItemAdded = new EventEmitter();
+    this.willFavorite = new EventEmitter();
     this.updates = [];
     this.store.select(state => state.destinos.favorito).subscribe(favorito => {
       if (favorito !== null) {
         this.updates.push(favorito.nombre)
       }
     });
+    this.store.select(state => state.destinos.items).subscribe(items => this.all = items)
 
   }
 
   agregado(destino: DestinoViaje) {
     this.destinosApiClient.add(destino);
-    this.onItemAdded.emit(destino);
-    switch (this.willBeFavorite) {
-      case true: {
-        this.store.dispatch(new NuevoDestinoAction(destino));
-        break
-      }
-      case false: {
-        this.store.dispatch(new NoFavoritoDestinoAction());
-        break
-      }
-
+    if(this.willBeFavorite === true){
+      this.destinosApiClient.elegir(destino)
     }
-
-  }
-
-  getAll() {
-
   }
 
   elegido(destino: DestinoViaje) {
     this.destinosApiClient.elegir(destino);
-    this.store.dispatch(new FavoritoDestinoAction(destino));
   }
 
   setWillFavorite(favorite: boolean) {

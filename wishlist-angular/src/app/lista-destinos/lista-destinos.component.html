@@ -19,7 +19,7 @@
   </div>
   <div class="row mt-5 justify-content-center">
     <app-destino-viaje
-      *ngFor="let destino of destinosApiClient.getAll(); let indice = index" [destino]="destino" [indice]="indice"
+      *ngFor="let destino of all; let indice = index" [destino]="destino" [indice]="indice"
       (clicked)="elegido($event)" (eliminarDestino)="willBeDelete($event)">
     </app-destino-viaje>
   </div>
@@ -32,7 +32,7 @@
 </div>
 
 <div class="row justify-content-center mt-3" id="seccion-historial">
-  <button (click)="eliminarUpdates()" style="color: #494550;" class="btn btn-link col-12" *ngIf="contadorHistorial !== updates.length">Limpiar Historial</button>
+  <a (click)="eliminarUpdates()" style="color: #494550;" class="btn btn-link col-12" *ngIf="contadorHistorial !== updates.length">Limpiar Historial</a>
   <div *ngFor="let message of updates"
        class="col-md-10 col-lg-7 col-xl-6 ml-3 mr-3 alert alert-warning alert-dismissible fade show msg msg-info"
        role="alert">

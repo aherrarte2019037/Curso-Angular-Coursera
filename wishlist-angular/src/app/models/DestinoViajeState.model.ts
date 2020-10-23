@@ -27,7 +27,8 @@ export enum DestinoViajeActionType {
   ELEGIDO_FAVORITO = '[Destino Viaje] Favorito',
   NO_ELEGIDO_FAVORITO = '[Destino Viaje] NoFavorito',
   VOTE_UP = '[Destino Viaje] Vote Up',
-  VOTE_DOWN = '[Destino Viaje] Vote Down'
+  VOTE_DOWN = '[Destino Viaje] Vote Down',
+  DELETE = '[Destino Viaje] Delete'
 }
 
 
@@ -44,7 +45,7 @@ export class FavoritoDestinoAction implements Action {
 
 export class NoFavoritoDestinoAction implements Action{
   type = DestinoViajeActionType.NO_ELEGIDO_FAVORITO;
-  constructor() {}
+  constructor(public destino: DestinoViaje) {}
 }
 
 export class VoteUpAction implements Action{
@@ -57,7 +58,13 @@ export class VoteDownAction implements Action{
   constructor(public destino: DestinoViaje) {}
 }
 
-export type DestinoViajeActions = NuevoDestinoAction | FavoritoDestinoAction | NoFavoritoDestinoAction | VoteUpAction | VoteDownAction;
+export class DeleteAction implements Action{
+  type = DestinoViajeActionType.DELETE;
+  constructor(public indice:number) {
+  }
+}
+
+export type DestinoViajeActions = NuevoDestinoAction | FavoritoDestinoAction | NoFavoritoDestinoAction | VoteUpAction | VoteDownAction | DeleteAction;
 
 
 /* Reducers */
@@ -78,7 +85,10 @@ export function reducerDestinoViajes(state: DestinoViajeState, action: DestinoVi
     }
 
     case DestinoViajeActionType.NO_ELEGIDO_FAVORITO: {
-      return {...state}
+      return {
+        ...state,
+        items: [...state.items, (action as NuevoDestinoAction).destino]
+      }
     }
 
     case DestinoViajeActionType.VOTE_UP: {
@@ -90,6 +100,14 @@ export function reducerDestinoViajes(state: DestinoViajeState, action: DestinoVi
       (action as VoteUpAction).destino.voteDown()
       return {...state}
     }
+
+    case DestinoViajeActionType.DELETE: {
+      const indice = (action as DeleteAction).indice
+      console.log(indice)
+      state.items.splice(indice, 1)
+      return {...state}
+    }
+
   }
   return state;
 
