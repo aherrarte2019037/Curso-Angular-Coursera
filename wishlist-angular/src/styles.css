@@ -2,6 +2,130 @@
 @import "~@fortawesome/fontawesome-free/css/all.min.css";
 @import url('https://fonts.googleapis.com/css?family=Raleway:400,400i,500,500i,600,600i,700,700i,800,800i ,900,900i|Roboto+Condensed:400,400i,700,700i');
 
+
+::-webkit-scrollbar {
+  width: 5px;
+  background-color: transparent;
+  background: transparent;
+}
+
+::-webkit-scrollbar-track {
+  height: 10px;
+  background-color: transparent;
+  border: 0 solid #232943;
+}
+
+::-webkit-scrollbar-thumb {
+  margin-top: 50px;
+  background: rgba(110, 110, 110, 0.8);
+  border-radius: 20px;
+}
+
+::-webkit-scrollbar-track-piece:start {
+  background: transparent;
+  margin-top: 90px;
+}
+
+::-webkit-scrollbar-track-piece:end {
+  background: transparent;
+  margin-bottom: 90px;
+}
+
+body {
+  overflow: overlay;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.hvr-sweep-to-right-like {
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  position: relative;
+  -webkit-transition-property: color;
+  transition-property: color;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+}
+
+.hvr-sweep-to-right-detail {
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  position: relative;
+  -webkit-transition-property: color;
+  transition-property: color;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+}
+
+.hvr-sweep-to-right-like:before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #7378cb;
+  border-radius: .195rem;
+  -webkit-transform: scaleX(0);
+  transform: scaleX(0);
+  -webkit-transform-origin: 0 50%;
+  transform-origin: 0 50%;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-timing-function: ease-out;
+  transition-timing-function: ease-out;
+}
+
+.hvr-sweep-to-right-detail:before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #c67bc7;
+  border-radius: .195rem;
+  -webkit-transform: scaleX(0);
+  transform: scaleX(0);
+  -webkit-transform-origin: 0 50%;
+  transform-origin: 0 50%;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-timing-function: ease-out;
+  transition-timing-function: ease-out;
+}
+
+.hvr-sweep-to-right-like:hover, .hvr-sweep-to-right-like:focus, .hvr-sweep-to-right-like:active {
+  color: white;
+}
+.hvr-sweep-to-right-like:hover:before, .hvr-sweep-to-right-like:focus:before, .hvr-sweep-to-right-like:active:before {
+  -webkit-transform: scaleX(1);
+  transform: scaleX(1);
+}
+
+
+.hvr-sweep-to-right-detail:hover, .hvr-sweep-to-right-detail:focus, .hvr-sweep-to-right-detail:active {
+  color: white;
+}
+.hvr-sweep-to-right-detail:hover:before, .hvr-sweep-to-right-detail:focus:before, .hvr-sweep-to-right-detail:active:before {
+  -webkit-transform: scaleX(1);
+  transform: scaleX(1);
+}
+
 section {
   padding: 100px 0;
 }
@@ -50,6 +174,62 @@ section {
   transform: translate(-50%, -50%);
 }
 
+#card-voteUp{
+  -webkit-box-shadow: 5px 5px 10px -3px #000000;
+  box-shadow: 5px 5px 10px -3px #000000;
+  position: absolute;
+  top: 30%;
+  left: 10%;
+  background: #363636;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 12px;
+  padding-right: 12px;
+  color: #fff;
+  font-size: 12px;
+  border-radius: 25px !important;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  -o-border-radius: 4px;
+  transform: translate(-50%, -50%);
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+#card-voteUp:hover{
+  background-color: #275fb5;
+  box-shadow: 1px 4px 2px 0px #082450;
+}
+
+#card-voteDown{
+  -webkit-box-shadow: 5px 5px 10px -3px #000000;
+  box-shadow: 5px 5px 10px -3px #000000;
+  position: absolute;
+  top: 46%;
+  left: 10%;
+  background: #363636;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 12px;
+  padding-right: 12px;
+  color: #fff;
+  font-size: 12px;
+  border-radius: 25px !important;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  -o-border-radius: 4px;
+  transform: translate(-50%, -50%);
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+#card-voteDown:hover{
+  background-color: #275fb5;
+  box-shadow: 1px 4px 2px 0px #082450;
+}
+
 #card-close{
   cursor: pointer;
   margin: 0;
@@ -68,11 +248,29 @@ section {
     top: 13%;
     left: 9%;
   }
+
+  #card-voteUp {
+    top: 29%;
+    left: 9%;
+  }
+
+  #card-voteDown {
+    top: 45%;
+    left: 9%;
+  }
 }
 
 @media (min-width: 475px) and (max-width: 767px) {
   #card-index {
     top: 9%;
+    left: 7%;
+  }
+  #card-voteUp {
+    top: 25%;
+    left: 7%;
+  }
+  #card-voteDown {
+    top: 41%;
     left: 7%;
   }
 }
@@ -82,6 +280,14 @@ section {
     top: 14%;
     left: 10%;
   }
+  #card-voteUp {
+    top: 30%;
+    left: 10%;
+  }
+  #card-voteDown {
+    top: 46%;
+    left: 10%;
+  }
 }
 
 #card-index h4 {
@@ -89,6 +295,22 @@ section {
   font-size: 12px;
   margin: 0;
   padding: 10px 5px;
+  line-height: 0;
+}
+
+#card-voteUp h4 {
+  font-weight: 400;
+  font-size: 12px;
+  margin: 0;
+  padding: 4px 2px;
+  line-height: 0;
+}
+
+#card-voteDown h4 {
+  font-weight: 400;
+  font-size: 12px;
+  margin: 0;
+  padding: 5px 2px 3px 2px;
   line-height: 0;
 }
 
@@ -118,13 +340,13 @@ section {
 }
 
 .btn-card {
+  font-family: "Calibri Light";
   -webkit-text-stroke: 0.08px rgba(255, 255, 255, 0.5);
-  width: 75%;
   background-color: #565cad;
   color: white!important;
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .16), 0 2px 10px 0 rgba(0, 0, 0, .12);
   padding: .25rem 2.14rem;
-  font-size: .88rem;
+  font-size: .93rem;
   -webkit-transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, -webkit-box-shadow .15s ease-in-out;
   transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, -webkit-box-shadow .15s ease-in-out;
   -o-transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-inout, box-shadow .15s ease-in-out;
@@ -136,19 +358,11 @@ section {
   border-radius: .195rem;
   cursor: pointer;
   white-space: normal;
-  word-wrap: break-word;
+  word-wrap: break-word!important;
 }
 
 .btn-detalle{
-  background-color: #363636;
-}
-
-.btn-detalle:hover{
-  background-color: #414141 !important;
-}
-
-.btn-card:hover {
-  background: #6268be;
+  background-color: #b866bb;
 }
 
 a.btn-card {

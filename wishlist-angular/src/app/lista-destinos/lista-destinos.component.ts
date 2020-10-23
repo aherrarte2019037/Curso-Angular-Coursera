@@ -45,6 +45,10 @@ export class ListaDestinosComponent {
 
   }
 
+  getAll() {
+
+  }
+
   elegido(destino: DestinoViaje) {
     this.destinosApiClient.elegir(destino);
     this.store.dispatch(new FavoritoDestinoAction(destino));
@@ -56,5 +60,9 @@ export class ListaDestinosComponent {
 
   willBeDelete(idEliminar: number) {
     this.destinosApiClient.delete(idEliminar)
+  }
+
+  eliminarUpdates() {
+    this.updates = []
   }
 }

@@ -10,7 +10,8 @@
         </div>
         <div class="card-body" style="color: #535353; font-weight: 500">
 
-          <app-form-destino-viaje  (willFavorite)="setWillFavorite($event)" (onItemAdded)="agregado($event)"></app-form-destino-viaje>
+          <app-form-destino-viaje (willFavorite)="setWillFavorite($event)"
+                                  (onItemAdded)="agregado($event)"></app-form-destino-viaje>
 
         </div>
       </div>
@@ -24,20 +25,20 @@
   </div>
 </div>
 
-<div *ngIf="contadorHistorial !== updates.length">
-  <div *ngIf="updates.length !== 0">
-    <hr class="mt-5">
-    <h1 class="display-4 ml-2 mb-4 text-dark text-center" style="font-size: 45px">Historial</h1>
-  </div>
+<div class="text-center">
+  <hr class="mt-5">
+  <h1 class="display-4 ml-2 mb-1 text-dark text-center" style="font-size: 45px">Historial</h1>
+  <p style="color: #363636" *ngIf="contadorHistorial === updates.length" class="font-italic text-center mb-4">Aquí se mostrarán las acciones que realices</p>
 </div>
 
-
-<div class="row justify-content-center">
+<div class="row justify-content-center mt-3" id="seccion-historial">
+  <button (click)="eliminarUpdates()" style="color: #494550;" class="btn btn-link col-12" *ngIf="contadorHistorial !== updates.length">Limpiar Historial</button>
   <div *ngFor="let message of updates"
        class="col-md-10 col-lg-7 col-xl-6 ml-3 mr-3 alert alert-warning alert-dismissible fade show msg msg-info"
        role="alert">
     Escogiste como favorito a <strong>{{ message }}</strong>
-    <a (click)="contadorHistorial = contadorHistorial + 1;" type="button" class="close msg-close" data-dismiss="alert" aria-label="Close">
+    <a (click)="contadorHistorial = contadorHistorial + 1;" type="button" class="close msg-close" data-dismiss="alert"
+       aria-label="Close">
       <span aria-hidden="true">&times;</span>
     </a>
   </div>

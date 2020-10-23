@@ -51,13 +51,18 @@ const reducersInitialState = {
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
-    RouterModule.forRoot(routes),
+    RouterModule.forRoot(routes, {
+      onSameUrlNavigation: 'ignore',
+      anchorScrolling: 'enabled',
+      scrollPositionRestoration: 'enabled'
+    }),
     NgRxStoreModule.forRoot(reducers, { initialState: reducersInitialState,
     runtimeChecks:{
      strictStateImmutability: false,
      strictActionImmutability:false
     }}),
-    EffectsModule.forRoot([DestinoViajeEffects])
+    EffectsModule.forRoot([DestinoViajeEffects]),
+    StoreDevtoolsModule.instrument()
   ],
   providers: [
     DestinosApiClient

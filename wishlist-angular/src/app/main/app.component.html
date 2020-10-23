@@ -8,7 +8,7 @@
       <a [routerLink]="['/home']" (click)="activarHome()" class="nav-item nav-link {{ activeHome }}">Inicio</a>
       <a [routerLink]="['/destino']" (click)="activarDestino()" class="nav-item nav-link {{ activeDestino }}">Destino</a>
     </div>
-    <span style="background-color: #8f9ad0; padding-top: 5px; padding-bottom: 5px" class="navbar-text ml-auto text-light pl-3 pr-3 rounded"><i class="fas fa-clock mr-1"></i> {{ time | async }} &nbsp; {{ date | async}}</span>
+    <span style="background-color: #8f9ad0; padding-top: 4px; padding-bottom: 4px" class="navbar-text ml-auto text-light pl-3 pr-3 rounded"><i class="fas fa-clock mr-1"></i> {{ time | async }} &nbsp; {{ date | async}}</span>
   </div>
 </nav>
 

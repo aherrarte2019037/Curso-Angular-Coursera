@@ -1,7 +1,9 @@
 <div style="border-radius: 0.5rem" class="card-content">
   <div class="card-img">
     <img style="border-radius: 0.5rem 0.5rem 0 0" src="https://placeimg.com/380/230/nature" alt="">
-    <span id="card-index"><h4>{{ indice + 1 }}</h4></span>
+    <span id="card-index"><h4>{{ destino.votes }}</h4></span>
+    <span (click)="voteUp()" id="card-voteUp"><h4><i class="fas fa-thumbs-up"></i></h4></span>
+    <span (click)="voteDown()" id="card-voteDown"><h4><i class="fas fa-thumbs-down"></i></h4></span>
   </div>
   <span (click)="setEliminarDestino(indice)" id="card-close" class="float-right" aria-hidden="true" title="Eliminar">&times;</span>
   <div style="padding-top: 12px" class="card-desc">
@@ -17,9 +19,9 @@
         </span>
       </li>
     </ul>
-    <div class="d-flex justify-content-center flex-wrap">
-      <a class="btn-card" (click)="seleccionar()">Me Gusta <i *ngIf="destino.isSelected()" class="fas fa-heart fa-sm"></i></a>
-      <a class="btn-card btn-detalle mt-2" [routerLink]="['/destino']">Ver Detalles</a>
+    <div class="d-flex flex-grow-1 justify-content-center">
+      <a class="btn-card mr-1 hvr-sweep-to-right-like" (click)="seleccionar()">Favorito <i *ngIf="destino.isSelected()" class="fas fa-heart fa-sm"></i></a>
+      <a class="btn-card btn-detalle ml-1 hvr-sweep-to-right-detail" [routerLink]="['/destino']">Detalles</a>
     </div>
   </div>
 </div>
