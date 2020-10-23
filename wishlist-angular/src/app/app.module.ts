@@ -18,6 +18,7 @@ import {
   reducerDestinoViajes
 } from "./models/DestinoViajeState.model";
 import {ActionReducerMap} from "@ngrx/store";
+import {StoreDevtoolsModule} from "@ngrx/store-devtools";
 
 const routes: Routes= [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
