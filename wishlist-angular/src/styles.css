@@ -385,6 +385,27 @@ a.btn-card {
   margin-left: 2px;
 }
 
+.tooltip { /* Container for our tooltip */
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip .tooltiptext { /* This is for the tooltip text */
+  visibility: hidden;
+  width: 100px;
+  background-color: #8512d5;
+  color: white;
+  text-align: center;
+  padding: 10px;
+  border-radius: 10px;  /* This defines tooltip text position */
+  position: absolute;
+  z-index: 1;
+}
+
+.tooltip:hover .tooltiptext { /* Makes tooltip text visible when text is hovered on */
+  visibility: visible;
+}
+
 .msg {
   letter-spacing: 0.7px;
   margin-left: 1.8%;
@@ -448,4 +469,214 @@ a.btn-card {
 }
 .msg-magick-text {
   color: #bb39d7;
+}
+
+.input-login {
+  border-radius: 0;
+  border: 0;
+  border-radius: 20px;
+  border: 1px solid #d6d4d4;
+  transition: 0.4s;
+}
+
+.input-login:hover {
+  box-shadow: 2px 4px 15px -4px rgba(0,0,0,0.2);
+}
+
+.input-login:focus {
+  border-color: #818080;
+  box-shadow: 2px 4px 15px -4px rgba(0,0,0,0.2);
+}
+
+.input-login::placeholder {
+  font-family: "Font Awesome 5 Free", "Century Gothic";
+  transition: 0.4s;
+  color: #989797;
+  font-size: 14.5px;
+  padding-left: 7px;
+}
+
+.input-login:focus::placeholder {
+  color: #818080;
+}
+
+small.form-text:hover{
+  cursor: pointer;
+}
+
+small.form-text:hover{
+  text-decoration: underline;
+}
+
+#btn-iniciar-sesion {
+  background: linear-gradient(to left, #36d1dc, #5b86e5);
+  border: none;
+}
+
+#btn-cerrar-sesion {
+  background: linear-gradient(to left, #f13951, #f55a4d);
+  border: none;
+}
+
+#btn-registrarse{
+  background: linear-gradient(to left, #00b09b, #96c93d);
+  border: none;
+}
+
+.hvr-shadow {
+  box-shadow: 0 10px 10px -10px rgba(0, 0, 0, 0.5)!important;
+}
+
+@-webkit-keyframes hvr-wobble-horizontal {
+  16.65% {
+    -webkit-transform: translateX(8px);
+    transform: translateX(8px);
+  }
+  33.3% {
+    -webkit-transform: translateX(-6px);
+    transform: translateX(-6px);
+  }
+  49.95% {
+    -webkit-transform: translateX(4px);
+    transform: translateX(4px);
+  }
+  66.6% {
+    -webkit-transform: translateX(-2px);
+    transform: translateX(-2px);
+  }
+  83.25% {
+    -webkit-transform: translateX(1px);
+    transform: translateX(1px);
+  }
+  100% {
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+  }
+}
+@keyframes hvr-wobble-horizontal {
+  16.65% {
+    -webkit-transform: translateX(8px);
+    transform: translateX(8px);
+  }
+  33.3% {
+    -webkit-transform: translateX(-6px);
+    transform: translateX(-6px);
+  }
+  49.95% {
+    -webkit-transform: translateX(4px);
+    transform: translateX(4px);
+  }
+  66.6% {
+    -webkit-transform: translateX(-2px);
+    transform: translateX(-2px);
+  }
+  83.25% {
+    -webkit-transform: translateX(1px);
+    transform: translateX(1px);
+  }
+  100% {
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+  }
+}
+.hvr-wobble-horizontal {
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+}
+.hvr-wobble-horizontal:hover, .hvr-wobble-horizontal:focus, .hvr-wobble-horizontal:active {
+  -webkit-animation-name: hvr-wobble-horizontal;
+  animation-name: hvr-wobble-horizontal;
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-timing-function: ease-in-out;
+  animation-timing-function: ease-in-out;
+  -webkit-animation-iteration-count: 1;
+  animation-iteration-count: 1;
+}
+
+.register-icons a {
+  text-align: center;
+  width: 38px;
+  height: 38px;
+  padding-top: 6px!important;
+  border-radius: 100%;
+}
+
+#icon-facebook{
+  padding-top: 7px!important;
+  background: #5b86e5;
+  box-shadow: 0px 3px 1px 1px #364F87;
+}
+
+#icon-facebook:hover{
+  color: white!important;
+}
+
+#icon-google{
+  padding-top: 8px!important;
+  padding-left: 2px!important;
+  background: #b87c5c;
+  box-shadow: 0px 3px 1px 1px #7e5740;
+}
+
+#icon-google:hover{
+  color: white!important;
+}
+
+
+#icon-instagram{
+  font-size: 13px!important;
+  padding-top: 6px!important;
+  background: #ac67b8;
+  box-shadow: 0px 3px 1px 1px #784781;
+}
+
+#icon-instagram:hover{
+  color: white!important;
+}
+
+#icon-apple{
+  padding-top: 7px!important;
+  padding-left: 1px!important;
+  background: #393939;
+  box-shadow: 0px 3px 1px 1px #1f1f1f;
+}
+
+#icon-apple:hover{
+  color: white!important;
+}
+
+.hvr-grow {
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+}
+.hvr-grow:hover, .hvr-grow:focus {
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
+}
+
+.hvr-shrink {
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+}
+.hvr-shrink:active {
+  -webkit-transform: scale(0.9);
+  transform: scale(0.9);
 }

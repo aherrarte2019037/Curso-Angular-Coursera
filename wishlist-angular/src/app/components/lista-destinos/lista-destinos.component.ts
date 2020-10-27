@@ -1,7 +1,7 @@
 import {Component, EventEmitter, Output} from '@angular/core';
-import {DestinoViaje} from '../models/DestinoViaje.model';
-import {DestinosApiClient} from '../models/DestinosApiClient.model';
-import {AppState} from "../app.module";
+import {DestinoViaje} from '../../models/DestinoViaje.model';
+import {DestinosApiClient} from '../../models/DestinosApiClient.model';
+import {AppState} from "../../app.module";
 import {Store} from "@ngrx/store";
 
 @Component({
