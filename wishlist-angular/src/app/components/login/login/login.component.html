@@ -1,7 +1,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&display=swap" rel="stylesheet">
 
 <form style="margin: 3vh auto 0">
-  <div class="row justify-content-center mt-0">
+  <div class="row justify-content-center mt-0 mb-5">
     <div class="col-sm-9 col-10 col-md-8 col-lg-6 col-xl-5 bg-light pl-md-5 pr-md-5 pl-4 pr-4"
          style="padding-bottom: 4vh; padding-top: 3vh; border-radius: 12px;">
         <h1 class="display-4 text-center mb-4 text-dark" style="font-family: 'Caveat',cursive; font-size: 68px">
@@ -27,11 +27,11 @@
         <a id="btn-cerrar-sesion" class="btn btn-danger btn-block rounded-pill hvr-wobble-horizontal hvr-shadow"
            (click)="logout()" *ngIf="authService.isLogged()">Cerrar Sesión</a>
 
-        <div class="d-flex mt-3">
-          <hr class="mr-2" style="width: 34%">
+        <div class="d-flex mt-3 flex-nowrap">
+          <hr class="mr-2 flex-fill">
           <small style="color: #a9a8a6" class="d-flex justify-content-center align-items-center">No tienes
             cuenta</small>
-          <hr class="ml-2" style="width: 34%">
+          <hr class="ml-2 flex-fill">
         </div>
 
         <div class="text-center mt-3">
@@ -55,7 +55,7 @@
         <a id="btn-registrarse" class="mt-2 btn btn-info btn-block rounded-pill hvr-wobble-horizontal hvr-shadow"
            (click)="login(txtUser.value, txtPass.value)">Registrarse</a>
 
-        <span class="d-flex justify-content-center text-muted">{{ mensajeError }}</span>
+        <span class="d-flex justify-content-center text-muted mt-2">{{ mensajeError }}</span>
 
     </div>
   </div>

@@ -19,6 +19,8 @@ export class LoginComponent implements OnInit {
 
     if(this.authService.login(user, pass)){
       this.mensajeError = 'Ingreso Exitoso'
+      user = ''
+      pass = ''
       setTimeout(function () {
         this.mensajeError = '';
       }.bind(this), 2500);
