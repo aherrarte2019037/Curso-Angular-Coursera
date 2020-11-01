@@ -8,23 +8,32 @@ import {AuthService} from "../../../services/auth.service";
 })
 export class LoginComponent implements OnInit {
   mensajeError:string = '';
+  activarModal:string = '';
+  mensajeModal:string = '';
 
   constructor(public authService: AuthService) { }
 
   ngOnInit(): void {
   }
 
-  login(user  : string, pass: string) {
+  login(user, pass) {
     this.mensajeError = '';
 
-    if(this.authService.login(user, pass)){
+    if(!user.value || !pass.value) {
+      this.mensajeModal = 'Datos Incompletos';
+      this.activarModal = '#modal'
+    }else if(this.authService.login(user.value, pass.value)){
       this.mensajeError = 'Ingreso Exitoso'
-      user = ''
-      pass = ''
+      user.value = '';
+      pass.value = '';
+      this.mensajeModal = 'Ingreso Exitoso';
+      this.activarModal = ''
       setTimeout(function () {
         this.mensajeError = '';
       }.bind(this), 2500);
     }else {
+      this.mensajeModal = 'Usuario / Contraseña Incorrectos';
+      this.activarModal = '#modal'
       this.mensajeError = 'Ingreso Fallido'
     }
 

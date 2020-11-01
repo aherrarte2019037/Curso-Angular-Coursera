@@ -13,7 +13,7 @@ export interface DestinoViajeState {
 }
 
 
-export function intializeDestinoViajeState() {
+export function initializeDestinoViajeState() {
   return {
     items: [],
     loading: false,
@@ -28,7 +28,8 @@ export enum DestinoViajeActionType {
   NO_ELEGIDO_FAVORITO = '[Destino Viaje] NoFavorito',
   VOTE_UP = '[Destino Viaje] Vote Up',
   VOTE_DOWN = '[Destino Viaje] Vote Down',
-  DELETE = '[Destino Viaje] Delete'
+  DELETE = '[Destino Viaje] Delete',
+  INIT_DATA = '[Destino Viaje] Init Data'
 }
 
 
@@ -48,28 +49,42 @@ export class NoFavoritoDestinoAction implements Action{
   constructor(public destino: DestinoViaje) {}
 }
 
-export class VoteUpAction implements Action{
+export class VoteUpAction implements Action {
   type = DestinoViajeActionType.VOTE_UP;
   constructor(public destino: DestinoViaje) {}
 }
 
-export class VoteDownAction implements Action{
+export class VoteDownAction implements Action {
   type = DestinoViajeActionType.VOTE_DOWN;
   constructor(public destino: DestinoViaje) {}
 }
 
-export class DeleteAction implements Action{
+export class DeleteAction implements Action {
   type = DestinoViajeActionType.DELETE;
   constructor(public indice:number) {
   }
 }
 
-export type DestinoViajeActions = NuevoDestinoAction | FavoritoDestinoAction | NoFavoritoDestinoAction | VoteUpAction | VoteDownAction | DeleteAction;
+export class InitDataAction implements Action {
+ type = DestinoViajeActionType.INIT_DATA;
+ constructor(public destino: DestinoViaje[]) {}
+
+}
+
+export type DestinoViajeActions = NuevoDestinoAction | FavoritoDestinoAction | NoFavoritoDestinoAction | VoteUpAction | VoteDownAction | DeleteAction | InitDataAction;
 
 
 /* Reducers */
 export function reducerDestinoViajes(state: DestinoViajeState, action: DestinoViajeActions): DestinoViajeState {
   switch (action.type) {
+
+    case DestinoViajeActionType.INIT_DATA: {
+      return {
+        ...state,
+        items:(action as InitDataAction).destino.map((d) => new DestinoViaje(d.nombre, d.descripcion, d.url))
+      }
+    }
+
     case DestinoViajeActionType.NUEVO_DESTINO: {
       return {
         ...state,
@@ -102,9 +117,7 @@ export function reducerDestinoViajes(state: DestinoViajeState, action: DestinoVi
     }
 
     case DestinoViajeActionType.DELETE: {
-      const indice = (action as DeleteAction).indice
-      console.log(indice)
-      state.items.splice(indice, 1)
+      state.items.splice((action as DeleteAction).indice, 1)
       return {...state}
     }
 

@@ -3,6 +3,7 @@ import {DestinoViaje} from '../../models/DestinoViaje.model';
 import {DestinosApiClient} from '../../models/DestinosApiClient.model';
 import {AppState} from "../../app.module";
 import {Store} from "@ngrx/store";
+import {TranslateService} from "@ngx-translate/core";
 
 @Component({
   selector: 'app-lista-destinos',
@@ -18,7 +19,8 @@ export class ListaDestinosComponent {
   willBeFavorite;
   all;
 
-  constructor(public destinosApiClient: DestinosApiClient, private store: Store<AppState>) {
+  constructor(public destinosApiClient: DestinosApiClient, private store: Store<AppState>, public translate:TranslateService) {
+    translate.setDefaultLang('es');
     this.onItemAdded = new EventEmitter();
     this.willFavorite = new EventEmitter();
     this.updates = [];

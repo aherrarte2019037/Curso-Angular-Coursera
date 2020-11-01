@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {Observable} from "rxjs";
+import {TranslateService} from "@ngx-translate/core";
 
 @Component({
   selector: 'app-root',
@@ -7,11 +8,15 @@ import {Observable} from "rxjs";
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'Angular';
   activeHome: string = 'active';
   activeDestino: string = '';
+  lang:string = '';
   DIAS = ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'];
   MESES = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre",];
+
+  constructor(public translate:TranslateService) {
+    translate.setDefaultLang('es');
+  }
 
   time = new Observable(observer => {
     setInterval(() => observer.next(new Date().getHours() + ':' + this.agregarCeros(new Date().getMinutes().toString()) + ':' + this.agregarCeros(new Date().getSeconds().toString()) + this.agregarSiglas()), 10);

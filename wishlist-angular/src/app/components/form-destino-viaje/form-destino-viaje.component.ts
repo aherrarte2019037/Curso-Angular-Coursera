@@ -1,9 +1,10 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, forwardRef, Inject, OnInit, Output} from '@angular/core';
 import {DestinoViaje} from "../../models/DestinoViaje.model";
 import {FormBuilder, FormControl, FormGroup, ValidatorFn, Validators} from "@angular/forms";
 import {fromEvent} from "rxjs";
 import {debounceTime, distinctUntilChanged, filter, map, switchMap} from "rxjs/operators";
 import {ajax} from "rxjs/ajax";
+import {APP_CONFIG, AppConfig} from "../../app.module";
 
 
 @Component({
@@ -23,7 +24,7 @@ export class FormDestinoViajeComponent implements OnInit {
   classInvalidDesc: string = '';
   results: string [];
 
-  constructor(private formulario: FormBuilder) {
+  constructor(private formulario: FormBuilder, @Inject(forwardRef(() => APP_CONFIG)) private config: AppConfig) {
     this.onItemAdded = new EventEmitter();
     this.willFavorite = new EventEmitter();
     this.formDj = formulario.group({
@@ -40,13 +41,11 @@ export class FormDestinoViajeComponent implements OnInit {
     fromEvent(elemNombre, 'input')
       .pipe(
         map((e: KeyboardEvent) => (e.target as HTMLInputElement).value),
-        filter(text => text.length > 4),
-        debounceTime(200),
+        filter(text => text.length > 2),
+        debounceTime(10),
         distinctUntilChanged(),
-        switchMap(() => ajax('/assets/json/datos.json'))
-      ).subscribe(ajaxResponse => {
-      this.results = ajaxResponse.response;
-    })
+        switchMap((text: string) => ajax(this.config.apiEndpoint + '/ciudades?q=' + text))
+      ).subscribe(ajaxResponse => this.results = ajaxResponse.response)
 
   }
 

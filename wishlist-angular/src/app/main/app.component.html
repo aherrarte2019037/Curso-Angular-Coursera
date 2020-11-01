@@ -7,6 +7,16 @@
     <div class="navbar-nav">
       <a [routerLink]="['/home']" (click)="activarHome()" class="nav-item nav-link {{ activeHome }}">Inicio</a>
       <a [routerLink]="['/destino']" (click)="activarDestino()" class="nav-item nav-link {{ activeDestino }}">Destino</a>
+      <a class="nav-item dropdown nav-item-dropdown">
+        <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Traducir
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a (click)="lang = 'es'; translate.use(lang)" class="dropdown-item">Español</a>
+          <a (click)="lang = 'en'; translate.use(lang)" class="dropdown-item">English</a>
+          <a (click)="lang = 'fr'; translate.use(lang)" class="dropdown-item">Français</a>
+        </div>
+      </a>
     </div>
     <span style="background-color: #8f9ad0; padding-top: 4px; padding-bottom: 4px" class="navbar-text ml-auto text-light pl-3 pr-3 rounded"><i class="fas fa-clock mr-1"></i> {{ time | async }} &nbsp; {{ date | async}}</span>
   </div>
@@ -15,7 +25,7 @@
 <div class="mt-5 container content">
 
   <div class="row justify-content-center">
-    <h1 class="display-4 text-light" style="font-size: 3em; font-weight: 400">{{ title }}</h1>
+    <h1 [innerHTML]="'Bienvenido' | translate" class="display-4 text-light" style="font-size: 3em; font-weight: 400"></h1>
   </div>
 
   <router-outlet></router-outlet>
