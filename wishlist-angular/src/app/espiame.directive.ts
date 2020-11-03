@@ -1,10 +1,17 @@
-import { Directive } from '@angular/core';
+import {Directive, OnDestroy, OnInit} from '@angular/core';
 
 @Directive({
   selector: '[appEspiame]'
 })
-export class EspiameDirective {
 
-  constructor() { }
+export class EspiameDirective implements OnInit, OnDestroy{
+  static nextId = 0;
+  log = (msg:string) => console.log(`Evento #${EspiameDirective.nextId++} ${msg}`);
+
+  constructor() {}
+
+  ngOnInit() { this.log('************** OnInit *************') }
+
+  ngOnDestroy() { this.log('************** OnDestroy *************') }
 
 }

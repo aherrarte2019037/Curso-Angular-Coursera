@@ -19,7 +19,10 @@
   </div>
   <div class="row mt-5 justify-content-center">
     <app-destino-viaje
-      *ngFor="let destino of all; let indice = index" [destino]="destino" [indice]="indice"
+      *ngFor="let destino of all; let indice = index"
+      [destino]="destino"
+      [indice]="indice"
+      appEspiame
       (clicked)="elegido($event)" (eliminarDestino)="willBeDelete($event)">
     </app-destino-viaje>
   </div>
