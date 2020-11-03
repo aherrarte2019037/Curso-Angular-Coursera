@@ -3,11 +3,28 @@ import {DestinoViaje} from '../../models/DestinoViaje.model';
 import {AppState} from "../../app.module";
 import {Store} from "@ngrx/store";
 import {VoteDownAction, VoteUpAction} from "../../models/DestinoViajeState.model";
+import {animate, state, style, transition, trigger} from "@angular/animations";
 
 @Component({
   selector: 'app-destino-viaje',
   templateUrl: './destino-viaje.component.html',
-  styleUrls: ['./destino-viaje.component.css']
+  styleUrls: ['./destino-viaje.component.css'],
+  animations: [
+    trigger('esFavorito', [
+      state('estadoFavorito', style({
+        backgroundColor: 'PaleTurquoise'
+      })),
+      state('estadoNoFavorito', style({
+        backgroundColor: 'WhiteSmoke'
+      })),
+      transition('estadoNoFavorito => estadoFavorito', [
+        animate('0.5s')
+      ]),
+      transition('estadFavorito => estadoNoFavorito', [
+        animate('1s')
+      ])
+    ])
+  ]
 })
 export class DestinoViajeComponent implements OnInit {
   @Input() destino: DestinoViaje;

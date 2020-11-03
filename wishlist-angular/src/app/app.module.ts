@@ -32,6 +32,9 @@ import {DestinoViaje} from "./models/DestinoViaje.model";
 import {from, Observable} from "rxjs";
 import {TranslateLoader, TranslateModule} from "@ngx-translate/core";
 import {flatMap} from "rxjs/internal/operators";
+import {NgxMapboxGLModule} from "ngx-mapbox-gl";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import { EspiameDirective } from './espiame.directive';
 
 
 /* App Config */
@@ -178,6 +181,7 @@ function HttpLoaderFactory(http: HttpClient) {
     VuelosMainComponentComponent,
     VuelosMasInfoComponentComponent,
     VuelosDetalleComponentComponent,
+    EspiameDirective,
   ],
   imports: [
     BrowserModule,
@@ -206,6 +210,8 @@ function HttpLoaderFactory(http: HttpClient) {
     StoreDevtoolsModule.instrument(),
     ReservasModule,
     HttpClientModule,
+    NgxMapboxGLModule,
+    BrowserAnimationsModule
   ],
   providers: [
     AuthService,
