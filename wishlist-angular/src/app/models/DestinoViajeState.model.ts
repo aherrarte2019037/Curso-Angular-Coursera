@@ -12,7 +12,7 @@ export interface DestinoViajeState {
   favorito: DestinoViaje;
 }
 
-
+/* Inicializar Datos */
 export function initializeDestinoViajeState() {
   return {
     items: [],
