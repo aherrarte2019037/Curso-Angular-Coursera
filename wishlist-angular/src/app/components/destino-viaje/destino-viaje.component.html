@@ -2,8 +2,8 @@
   <div class="card-img">
     <img style="border-radius: 0.5rem 0.5rem 0 0" src="https://placeimg.com/380/230/nature" alt="">
     <span id="card-index"><h4>{{ destino.votes }}</h4></span>
-    <span (click)="voteUp()" id="card-voteUp"><h4><i class="fas fa-thumbs-up"></i></h4></span>
-    <span (click)="voteDown()" id="card-voteDown"><h4><i class="fas fa-thumbs-down"></i></h4></span>
+    <span (click)="voteUp()" id="card-voteUp" appTrackearClick data-trackear-tags = "destino_vote_up lista_destinos_item"><h4><i class="fas fa-thumbs-up"></i></h4></span>
+    <span (click)="voteDown()" id="card-voteDown" appTrackearClick data-trackear-tags = "destino_vote_down lista_destinos_item"><h4><i class="fas fa-thumbs-down"></i></h4></span>
   </div>
   <span (click)="setEliminarDestino(indice)" id="card-close" class="float-right" aria-hidden="true" title="Eliminar">&times;</span>
 
@@ -21,7 +21,7 @@
       </li>
     </ul>
     <div class="d-flex flex-grow-1 justify-content-center">
-      <a class="btn-card mr-1 hvr-sweep-to-right-like" (click)="seleccionar()">Favorito <i *ngIf="destino.isSelected()" class="fas fa-heart fa-sm"></i></a>
+      <a class="btn-card mr-1 hvr-sweep-to-right-like" (click)="seleccionar()" appTrackearClick data-trackear-tags = "destino_set_favorite lista_destinos_item">Favorito <i *ngIf="destino.isSelected()" class="fas fa-heart fa-sm"></i></a>
       <a class="btn-card btn-detalle ml-1 hvr-sweep-to-right-detail" [routerLink]="['/destino', indice]">Detalles</a>
     </div>
   </div>
